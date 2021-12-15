@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<h1>The script element</h1>
+
+<p id="demo"></p>
+
+<script>
+var myprofiler = null;
+
+   function magenishCoolSleep () {
+   		//console.log("start long task");
+		var sleepDurationInMs = 3000;
+        var now = performance.now();
+        while (performance.now() < now + sleepDurationInMs) {
+            /* Do nothing */ }
+			//console.log("end long task");
+    };
+	
+	
+  async function stopProilfer () {
+		const mytrace = await myprofiler.stop();
+				console.log("profiler stopped");
+			  console.log(mytrace);
+    };
+        
+   async function main() {
+   		console.log("mmm starting");
+      	myprofiler = new Profiler({ sampleInterval: 16, maxBufferSize: 10000 });
+     		console.log("started");
+
+		setTimeout(magenishCoolSleep,0);
+            		console.log("posttimeout");
+
+		setTimeout(stopProilfer,4000);
+        
+        
+   };
+
+    main();
+   
+</script> 
+
+</body>
+</html>
+
+
+
+
+
